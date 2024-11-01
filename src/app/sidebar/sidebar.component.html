@@ -1,0 +1,15 @@
+<div class="mainContainer">
+  <div class="contentContainer">
+    <button [routerLink]="['/home/sidebar/channel']">
+      sidebar and channel
+    </button>
+    <button [routerLink]="['/home/sidebar/channel/thread']">
+      sidebar and channel
+    </button>
+    <button [routerLink]="['/home/channel/thread']">
+      close sidebar with thread
+    </button>
+    <button [routerLink]="['/home/channel']">only channel</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,10 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.contentContainer {
+  height: 100vh;
+  width: 20vw;
+  background-color: red;
+}
