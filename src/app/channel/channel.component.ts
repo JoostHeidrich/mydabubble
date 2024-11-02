@@ -28,7 +28,6 @@ export class ChannelComponent implements AfterViewInit {
   constructor(private router: Router) {}
 
   ngAfterViewInit(): void {
-    console.log('test');
 
     // Abonniere auf NavigationEnd-Events, um URL-Änderungen zu erkennen
     this.routerSubscription = this.router.events.subscribe((event) => {

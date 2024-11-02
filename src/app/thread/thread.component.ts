@@ -6,21 +6,22 @@ import {
   trigger,
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-thread',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './thread.component.html',
-  styleUrl: './thread.component.scss',
+  styleUrls: ['./thread.component.scss'],
   animations: [
     trigger('openClose', [
-      // ...
       state(
         'open',
         style({
-          height: '200px',
+          width: '25vw', // Zielbreite der Komponente
           opacity: 1,
           backgroundColor: 'yellow',
         })
@@ -28,18 +29,29 @@ import { Component } from '@angular/core';
       state(
         'closed',
         style({
-          height: '100px',
-          opacity: 0.8,
+          width: '0', // Startbreite für Animation
+          opacity: 0,
           backgroundColor: 'blue',
         })
       ),
-      transition('open => closed', [animate('1s')]),
-      transition('closed => open', [animate('0.5s')]),
+      transition('closed => open', [animate('3s ease-out')]),
+      transition('open => closed', [animate('3s ease-in')]),
     ]),
   ],
 })
-export class ThreadComponent {
-  isOpen = true;
+export class ThreadComponent implements AfterViewInit {
+  private routerSubscription: Subscription | undefined;
+  isOpen = false;
+
+  constructor(private router: Router) {}
+
+  ngAfterViewInit(): void {
+    // Setzt isOpen mit einer leichten Verzögerung auf true
+    setTimeout(() => {
+      this.isOpen = true;
+    }, 0); // kleines Delay, damit Angular das initiale Rendering abgeschlossen hat
+  }
+
   toggle() {
     this.isOpen = !this.isOpen;
   }
