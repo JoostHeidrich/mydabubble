@@ -8,3 +8,18 @@
   height: 100vh;
   background-color: green;
 }
+
+.changeWidth {
+  position: relative;
+  animation: changeWidth 1s linear; /* Dauer verlängert für gleichmäßiges Gefühl */
+  width: var(--target-width, 100vw);
+}
+
+@keyframes changeWidth {
+  0% {
+    width: 100vw;
+  }
+  100% {
+    width: var(--target-width, 75vw);
+  }
+}

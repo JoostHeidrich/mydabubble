@@ -3,3 +3,33 @@
   width: 25vw;
   background-color: blue;
 }
+
+.transOut {
+  position: relative;
+  animation: closeThread 1s linear;
+  right: -25vw;
+}
+
+.transIn {
+  position: relative;
+  animation: openThread 1s linear;
+  right: 0;
+}
+
+@keyframes closeThread {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -25vw;
+  }
+}
+
+@keyframes openThread {
+  0% {
+    right: -25vw;
+  }
+  100% {
+    right: 0;
+  }
+}

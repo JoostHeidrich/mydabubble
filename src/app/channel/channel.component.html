@@ -1,5 +1,17 @@
 <!-- channel component -->
 <div class="mainContainer">
-  <div #contentContainer class="contentContainer">Channel</div>
-  <router-outlet></router-outlet>
+  <div #contentContainer class="contentContainer changeWidth">
+    <div>
+      <button [routerLink]="['/home/channel/sidebar']">
+        home/channel/sidebar
+      </button>
+      <button [routerLink]="['/home/channel']">home/channel</button>
+      <button [routerLink]="['/home/channel/thread/sidebar']">
+        home/channel/thread/sidebar
+      </button>
+      <button [routerLink]="['/home/channel/thread']">
+        home/channel/thread
+      </button>
+    </div>
+  </div>
 </div>

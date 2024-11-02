@@ -28,7 +28,6 @@ export class ChannelComponent implements AfterViewInit {
   constructor(private router: Router) {}
 
   ngAfterViewInit(): void {
-
     // Abonniere auf NavigationEnd-Events, um URL-Änderungen zu erkennen
     this.routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -64,8 +63,21 @@ export class ChannelComponent implements AfterViewInit {
   }
 
   setWidthPercentage(percent: number): void {
-    const vw = window.innerWidth / 100; // 1vw in px
-    const widthInVw = percent * vw; // Berechne die Breite basierend auf Prozent
-    this.contentContainer.nativeElement.style.width = `${widthInVw}px`;
+    const vw = window.innerWidth / 100;
+    const widthInVw = percent * vw;
+
+    const element = this.contentContainer.nativeElement;
+
+    // Setze die CSS-Variable für die Zielbreite
+    element.style.setProperty('--target-width', `${widthInVw}px`);
+
+    // Entferne die Klasse, falls sie bereits vorhanden ist, um die Animation zurückzusetzen
+    element.classList.remove('changeWidth');
+
+    // Forciere ein Reflow, damit die Klasse erneut hinzugefügt werden kann
+    void element.offsetWidth;
+
+    // Füge die Klasse erneut hinzu, um die Animation zu starten
+    element.classList.add('changeWidth');
   }
 }
