@@ -59,7 +59,6 @@ export class ThreadComponent implements AfterViewInit {
       this.content.nativeElement.classList.remove('transIn');
       this.content.nativeElement.classList.remove('transOut');
       console.log(this.content.nativeElement);
-      this.content.nativeElement.offsetHeight; // Force reflow
     }
   }
 
