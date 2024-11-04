@@ -1,1 +1,10 @@
-<div #content class="contentContainer">test</div>
+<div
+  class="contentContainer"
+  [ngClass]="{
+    transIn:  (threadOpen$ | async),
+    transOut:  !(threadOpen$ | async),
+
+  }"
+>
+  test
+</div>

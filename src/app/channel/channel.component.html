@@ -1,17 +1,21 @@
 <!-- channel component -->
-<div class="mainContainer">
-  <div #contentContainer class="contentContainer changeWidth">
-    <div>
-      <button [routerLink]="['/home/channel/sidebar']">
-        home/channel/sidebar
-      </button>
-      <button [routerLink]="['/home/channel']">home/channel</button>
-      <button [routerLink]="['/home/channel/thread/sidebar']">
-        home/channel/thread/sidebar
-      </button>
-      <button [routerLink]="['/home/channel/thread']">
-        home/channel/thread
-      </button>
-    </div>
+<div
+  class="contentContainer"
+  [ngClass]="{
+    transition55: (threadOpen$ | async) && (sidebarOpen$ | async),
+    transition75: (threadOpen$ | async) && !(sidebarOpen$ | async),
+    transition80: !(threadOpen$ | async) && (sidebarOpen$ | async),
+    transition100: !(threadOpen$ | async) && !(sidebarOpen$ | async),
+  }"
+>
+  <div>
+    <button [routerLink]="['/home/channel/sidebar']">
+      home/channel/sidebar
+    </button>
+    <button [routerLink]="['/home/channel']">home/channel</button>
+    <button [routerLink]="['/home/channel/thread/sidebar']">
+      home/channel/thread/sidebar
+    </button>
+    <button [routerLink]="['/home/channel/thread']">home/channel/thread</button>
   </div>
 </div>

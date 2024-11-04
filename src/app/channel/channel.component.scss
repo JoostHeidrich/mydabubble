@@ -1,25 +1,67 @@
-.mainContainer {
-  display: flex;
-  flex-direction: row;
-}
-
 .contentContainer {
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   background-color: green;
 }
 
-.changeWidth {
-  position: relative;
-  animation: changeWidth 1s linear; /* Dauer verlängert für gleichmäßiges Gefühl */
-  width: var(--target-width, 100vw);
-}
-
-@keyframes changeWidth {
-  0% {
+@keyframes transitionTo100 {
+  from {
+    margin-left: 20vw;
+    width: 55vw;
+  }
+  to {
+    margin-left: 0;
     width: 100vw;
   }
-  100% {
-    width: var(--target-width, 75vw);
+}
+
+@keyframes transitionTo80 {
+  from {
+    margin-left: 0;
+    width: 100vw;
   }
+  to {
+    margin-left: 20vw;
+    width: 80vw;
+  }
+}
+
+@keyframes transitionTo75 {
+  from {
+    width: 100vw;
+  }
+  to {
+    width: 75vw;
+  }
+}
+
+@keyframes transitionTo55 {
+  from {
+    margin-left: 0;
+    width: 100vw;
+  }
+  to {
+    margin-left: 20vw;
+    width: 55vw;
+  }
+}
+
+.transition100 {
+  animation: transitionTo100 5s linear forwards;
+}
+
+.transition80 {
+  animation: transitionTo80 5s linear forwards;
+}
+
+.transition75 {
+  animation: transitionTo75 5s linear forwards;
+}
+
+.transition55 {
+  animation: transitionTo55 5s linear forwards;
+}
+
+.noTransition {
+  transition: none !important;
 }

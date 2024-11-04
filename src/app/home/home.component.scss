@@ -2,4 +2,11 @@
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+app-thread {
+  position: relative;
+  width: 25vw;
 }

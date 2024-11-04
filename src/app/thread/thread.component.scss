@@ -2,34 +2,33 @@
   height: 100vh;
   width: 25vw;
   background-color: blue;
+  position: absolute;
+  right: -25vw;
+  overflow: hidden;
 }
 
-.transOut {
-  position: relative;
-  animation: closeThread 1s linear;
-  right: -25vw;
+@keyframes slideIn {
+  from {
+    right: -25vw;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    right: 0;
+  }
+  to {
+    right: -25vw;
+  }
 }
 
 .transIn {
-  position: relative;
-  animation: openThread 1s linear;
-  right: 0;
+  animation: slideIn 5s linear forwards;
 }
 
-@keyframes closeThread {
-  0% {
-    right: 0;
-  }
-  100% {
-    right: -25vw;
-  }
-}
-
-@keyframes openThread {
-  0% {
-    right: -25vw;
-  }
-  100% {
-    right: 0;
-  }
+.transOut {
+  animation: slideOut 5s linear forwards;
 }
