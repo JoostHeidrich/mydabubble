@@ -3,7 +3,11 @@
   height: 100vh;
   background-color: green;
 }
-
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 @keyframes transitionTo100 {
   from {
     margin-left: 20vw;
