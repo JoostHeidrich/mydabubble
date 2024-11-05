@@ -9,13 +9,21 @@
   }"
 >
   <div class="content">
-    <button [routerLink]="['/home/channel/sidebar']">
+    <button [routerLink]="['/home/channel/' + channelId + '/sidebar']">
       home/channel/sidebar
     </button>
     <button [routerLink]="['/home/channel']">home/channel</button>
-    <button [routerLink]="['/home/channel/thread/sidebar']">
+    <button
+      [routerLink]="[
+        '/home/channel/' + channelId + '/thread/' + thradId + '/sidebar'
+      ]"
+    >
       home/channel/thread/sidebar
     </button>
-    <button [routerLink]="['/home/channel/thread']">home/channel/thread</button>
+    <button
+      [routerLink]="['/home/channel/' + channelId + '/thread/' + thradId]"
+    >
+      home/channel/thread
+    </button>
   </div>
 </div>

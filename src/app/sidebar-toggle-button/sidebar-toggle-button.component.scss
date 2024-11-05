@@ -1,0 +1,37 @@
+.content {
+  position: absolute;
+  z-index: 100;
+  bottom: 30vh;
+  left: -128.5px;
+  width: 280px;
+  padding: 23px 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  border-radius: 0px 0px 30px 30px;
+  box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.2);
+  transform: rotate(270deg);
+  font-size: 20px;
+  &:hover {
+    color: #535af1;
+    svg {
+      path {
+        stroke: #535af1;
+      }
+      rect {
+        stroke: #535af1;
+      }
+    }
+  }
+}
+
+.sidebarClosed {
+  transform: rotate(270deg);
+}
+
+.sidebarOpen {
+  transform: rotate(90deg);
+}

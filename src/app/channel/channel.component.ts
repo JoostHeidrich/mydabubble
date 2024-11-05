@@ -26,6 +26,8 @@ import { CommonModule } from '@angular/common';
 export class ChannelComponent {
   threadOpen$ = this.uiService.threadOpen$;
   sidebarOpen$ = this.uiService.sidebarOpen$;
+  channelId = 'testChannelId';
+  thradId = 'testThradId';
   constructor(public uiService: UiService) {}
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
