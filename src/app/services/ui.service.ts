@@ -29,7 +29,6 @@ export class UiService {
 
   checkForThread() {
     const isThreadInCurrent = this.currentUrl.includes('thread');
-    console.log(isThreadInCurrent + ' thread');
     if (isThreadInCurrent) {
       this.threadOpen.next(true);
     } else {
@@ -39,7 +38,6 @@ export class UiService {
 
   checkForSidebar() {
     const isSidebardInCurrent = this.currentUrl.includes('sidebar');
-    console.log(isSidebardInCurrent + ' sidebar');
     if (isSidebardInCurrent) {
       this.sidebarOpen.next(true);
     } else {

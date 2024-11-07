@@ -1,18 +1,10 @@
 <!-- channel component -->
-<div
-  class="contentContainer"
-  [ngClass]="{
-    transition55: (threadOpen$ | async) && (sidebarOpen$ | async),
-    transition75: (threadOpen$ | async) && !(sidebarOpen$ | async),
-    transition80: !(threadOpen$ | async) && (sidebarOpen$ | async),
-    transition100: !(threadOpen$ | async) && !(sidebarOpen$ | async),
-  }"
->
+<div class="contentContainer" [ngClass]="setAnimation()">
   <div class="content">
     <button [routerLink]="['/home/channel/' + channelId + '/sidebar']">
       home/channel/sidebar
     </button>
-    <button [routerLink]="['/home/channel']">home/channel</button>
+    <button [routerLink]="['/home/channel/' + channelId]">home/channel</button>
     <button
       [routerLink]="[
         '/home/channel/' + channelId + '/thread/' + thradId + '/sidebar'

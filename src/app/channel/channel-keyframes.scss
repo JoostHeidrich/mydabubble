@@ -1,0 +1,196 @@
+/* 1. Von 100vw auf 80vw (margin-left: 20vw) */
+@keyframes transition100To80 {
+  from {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+}
+
+.transition100To80 {
+  animation: transition100To80 5s linear forwards;
+}
+
+/* 2. Von 100vw auf 55vw (margin-left: 20vw, margin-right: 25vw) */
+@keyframes transition100To55 {
+  from {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+}
+
+.transition100To55 {
+  animation: transition100To55 5s linear forwards;
+}
+
+/* 3. Von 100vw auf 75vw (margin-right: 25vw) */
+@keyframes transition100To75 {
+  from {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 25vw;
+    width: 75vw;
+  }
+}
+
+.transition100To75 {
+  animation: transition100To75 5s linear forwards;
+}
+
+/* 4. Von 80vw (margin-left: 20vw) auf 55vw (margin-left: 20vw, margin-right: 25vw) */
+@keyframes transition80To55 {
+  from {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+}
+
+.transition80To55 {
+  animation: transition80To55 5s linear forwards;
+}
+
+/* 5. Von 80vw (margin-left: 20vw) auf 100vw */
+@keyframes transition80To100 {
+  from {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+}
+
+.transition80To100 {
+  animation: transition80To100 5s linear forwards;
+}
+
+/* 6. Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 100vw */
+@keyframes transition55To100 {
+  from {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+}
+
+.transition55To100 {
+  animation: transition55To100 5s linear forwards;
+}
+
+/* 7. Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 80vw (margin-left: 20vw) */
+@keyframes transition55To80 {
+  from {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+}
+
+.transition55To80 {
+  animation: transition55To80 5s linear forwards;
+}
+
+/* 6. Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 100vw */
+@keyframes transition55To100 {
+  from {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+}
+
+.transition55To100 {
+  animation: transition55To100 5s linear forwards;
+}
+
+/* 7. Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 80vw (margin-left: 20vw) */
+@keyframes transition55To75 {
+  from {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 75vw;
+  }
+}
+
+.transition55To75 {
+  animation: transition55To75 5s linear forwards;
+}
+
+/* 8. Von 75vw (margin-right: 25vw) auf 100vw */
+@keyframes transition75To100 {
+  from {
+    margin-left: 0;
+    margin-right: 25vw;
+    width: 75vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+}
+
+.transition75To100 {
+  animation: transition75To100 5s linear forwards;
+}
+
+@keyframes transition75To55 {
+  from {
+    margin-left: 0;
+    margin-right: 25vw;
+    width: 75vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+}
+
+.transition75To55 {
+  animation: transition75To55 5s linear forwards;
+}

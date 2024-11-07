@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home/channel/:channelId/sidebar', component: HomeComponent },
-  { path: 'home/channel', component: HomeComponent },
+  { path: 'home/channel/:channelId', component: HomeComponent },
   {
     path: 'home/channel/:channelId/thread/:threadId/sidebar',
     component: HomeComponent,

@@ -66,6 +66,10 @@
   animation: transitionTo55 5s linear forwards;
 }
 
+.transition {
+  animation: transition 5s linear forwards;
+}
+
 .noTransition {
   transition: none !important;
 }
