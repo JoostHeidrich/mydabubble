@@ -20,9 +20,4 @@ export class LastUrlService {
         this.currentUrl = this.router.url; // Speichere die aktuelle URL als letzte URL
       });
   }
-
-  // Methode zum Abrufen der letzten URL
-  public getLastUrl(): string | null {
-    return this.lastUrl;
-  }
 }

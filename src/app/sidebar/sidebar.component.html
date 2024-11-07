@@ -1,9 +1,1 @@
-<div
-  class="contentContainer"
-  [ngClass]="{
-    transIn: (sidebarOpen$ | async),
-    transOut: !(sidebarOpen$ | async),
-  }"
->
-  test
-</div>
+<div class="contentContainer" [ngClass]="getClass()">test</div>
