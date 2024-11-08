@@ -5,6 +5,7 @@ import { ThreadComponent } from '../thread/thread.component';
 import { UiService } from '../services/ui.service';
 import { CommonModule } from '@angular/common';
 import { SidebarToggleButtonComponent } from '../sidebar-toggle-button/sidebar-toggle-button.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { SidebarToggleButtonComponent } from '../sidebar-toggle-button/sidebar-t
     ThreadComponent,
     CommonModule,
     SidebarToggleButtonComponent,
+    HeaderComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

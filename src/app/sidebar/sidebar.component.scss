@@ -1,6 +1,6 @@
 .contentContainer {
   position: absolute;
-  height: 100vh;
+  height: calc(100vh - 60px);
   width: 20vw;
   background-color: red;
 }
