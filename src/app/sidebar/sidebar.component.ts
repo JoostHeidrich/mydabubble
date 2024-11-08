@@ -24,7 +24,8 @@ import { LastUrlService } from '../services/last-url.service';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent implements OnInit {
-  sidebarOpen$ = this.uiService.sidebarOpen$;
+  channelId = 'AAAChannelId';
+  thradId = 'AAAThradId';
   constructor(
     public uiService: UiService,
     private lastUrlService: LastUrlService

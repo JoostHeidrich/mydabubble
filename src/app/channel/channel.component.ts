@@ -14,8 +14,6 @@ import { LastUrlService } from '../services/last-url.service';
 export class ChannelComponent implements OnInit {
   threadOpen$ = this.uiService.threadOpen$;
   sidebarOpen$ = this.uiService.sidebarOpen$;
-  channelId = 'AAAChannelId';
-  thradId = 'AAAThradId';
 
   constructor(
     public uiService: UiService,

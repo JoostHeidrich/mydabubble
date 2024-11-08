@@ -26,9 +26,17 @@
 }
 
 .transIn {
-  animation: slideIn 5s linear forwards;
+  animation: slideIn 0.3s linear forwards;
 }
 
 .transOut {
-  animation: slideOut 5s linear forwards;
+  animation: slideOut 0.3s linear forwards;
+}
+
+.stayOut {
+  right: -25vw;
+}
+
+.stayIn {
+  right: 0;
 }

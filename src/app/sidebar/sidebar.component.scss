@@ -24,11 +24,11 @@
 }
 
 .transOut {
-  animation: slideOut 5s linear forwards; /* Animation für das Ausblenden */
+  animation: slideOut 0.3s linear forwards; /* Animation für das Ausblenden */
 }
 
 .transIn {
-  animation: slideIn 5s linear forwards; /* Animation für das Einblenden */
+  animation: slideIn 0.3s linear forwards; /* Animation für das Einblenden */
 }
 
 .stayOut {
