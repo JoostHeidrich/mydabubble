@@ -1,10 +1,16 @@
 .contentContainer {
+  position: absolute;
   height: calc(100vh - 60px);
   width: 25vw;
-  background-color: blue;
-  position: absolute;
+  background-color: #eceefe;
   right: -25vw;
-  overflow: hidden;
+}
+
+.content {
+  width: calc(100% - 20px);
+  margin-right: 20px;
+  background-color: red;
+  height: calc(100vh - 60px - 25px);
 }
 
 @keyframes slideIn {

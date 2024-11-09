@@ -1,8 +1,17 @@
-<app-header></app-header>
-<div class="content">
-  <app-sidebar></app-sidebar>
-  <app-channel></app-channel>
-  <app-thread></app-thread>
+<div>
+  <app-header></app-header>
+  <div class="content">
+    <app-sidebar></app-sidebar>
+    <app-channel></app-channel>
+    <app-thread></app-thread>
+  </div>
+</div>
+
+<div>
+  <app-new-channel
+    class="popUps"
+    *ngIf="lastUrlService.currentUrl.includes('createChannel')"
+  ></app-new-channel>
 </div>
 
 <app-sidebar-toggle-button></app-sidebar-toggle-button>

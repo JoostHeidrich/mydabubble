@@ -1,3 +1,48 @@
-.content{
-    height: 60px ;
+.content {
+  height: 60px;
+  background-color: #eceefe;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 50px;
+}
+
+.input {
+  position: absolute;
+  margin-left: 20px;
+  margin-right: 20px;
+  left: calc(20vw);
+  width: calc(55vw - 40px);
+  padding: 7px 0;
+
+  input {
+    display: flex;
+    padding: 12px 80px 12px 45px;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(55vw - 40px - 80px - 45px);
+    border: none;
+    border-radius: 42px;
+    font-size: 16px;
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.search {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 40px; /* Abstand vom rechten Rand des Input-Feldes */
+  top: 50%;
+  transform: translateY(-50%); /* Zentriert das Icon vertikal */
+  pointer-events: none; /* Verhindert, dass das Icon den Fokus auf das Input-Feld stört */
 }

@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
   thradId = 'AAAThradId';
   constructor(
     public uiService: UiService,
-    private lastUrlService: LastUrlService
+    public lastUrlService: LastUrlService
   ) {}
   ngOnInit(): void {}
 

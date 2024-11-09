@@ -14,4 +14,13 @@ export const routes: Routes = [
     path: 'home/channel/:channelId/thread/:threadId',
     component: HomeComponent,
   },
+  {
+    path: 'home/channel/:channelId/sidebar/createChannel',
+    component: HomeComponent,
+  },
+
+  {
+    path: 'home/channel/:channelId/thread/:threadId/sidebar/createChannel',
+    component: HomeComponent,
+  },
 ];

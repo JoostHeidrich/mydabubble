@@ -53,6 +53,24 @@
 }
 
 /* 4. Von 80vw (margin-left: 20vw) auf 55vw (margin-left: 20vw, margin-right: 25vw) */
+@keyframes transition80To75 {
+  from {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 25vw;
+    width: 75vw;
+  }
+}
+
+.transition80To75 {
+  animation: transition80To75 0.3s linear forwards;
+}
+
+/* 4. Von 80vw (margin-left: 20vw) auf 55vw (margin-left: 20vw, margin-right: 25vw) */
 @keyframes transition80To55 {
   from {
     margin-left: 20vw;
@@ -210,4 +228,76 @@
 
 .transition75To55 {
   animation: transition75To55 0.3s linear forwards;
+}
+
+/* Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 55vw (with margin-left changes) */
+@keyframes transition55To55 {
+  from {
+    margin-left: 20vw;
+    margin-right: 25vw;
+    width: 55vw;
+  }
+  to {
+    margin-left: 20vw; /* Adjust as desired for emphasis */
+    margin-right: 25vw;
+    width: 55vw;
+  }
+}
+
+.transition55To55 {
+  animation: transition55To55 0.3s linear forwards;
+}
+
+/* Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 55vw (with margin-left changes) */
+@keyframes transition80To80 {
+  from {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+  to {
+    margin-left: 20vw;
+    margin-right: 0;
+    width: 80vw;
+  }
+}
+
+.transition80To80 {
+  animation: transition80To80 0.3s linear forwards;
+}
+
+/* Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 55vw (with margin-left changes) */
+@keyframes transition75To75 {
+  from {
+    margin-left: 0;
+    margin-right: 25vw;
+    width: 75vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 25vw;
+    width: 75vw;
+  }
+}
+
+.transition75To75 {
+  animation: transition75To75 0.3s linear forwards;
+}
+
+/* Von 55vw (margin-left: 20vw, margin-right: 25vw) auf 55vw (with margin-left changes) */
+@keyframes transition100To100 {
+  from {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+  to {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+}
+
+.transition75To75 {
+  animation: transition75To75 0.3s linear forwards;
 }

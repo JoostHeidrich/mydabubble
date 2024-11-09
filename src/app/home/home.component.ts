@@ -6,6 +6,8 @@ import { UiService } from '../services/ui.service';
 import { CommonModule } from '@angular/common';
 import { SidebarToggleButtonComponent } from '../sidebar-toggle-button/sidebar-toggle-button.component';
 import { HeaderComponent } from '../header/header.component';
+import { NewChannelComponent } from '../pop-ups/new-channel/new-channel.component';
+import { LastUrlService } from '../services/last-url.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +19,7 @@ import { HeaderComponent } from '../header/header.component';
     CommonModule,
     SidebarToggleButtonComponent,
     HeaderComponent,
+    NewChannelComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -24,5 +27,5 @@ import { HeaderComponent } from '../header/header.component';
 export class HomeComponent {
   threadOpen$ = this.uiService.threadOpen$;
   sidebarOpen$ = this.uiService.sidebarOpen$;
-  constructor(public uiService: UiService) {}
+  constructor(public uiService: UiService, public lastUrlService: LastUrlService) {}
 }
