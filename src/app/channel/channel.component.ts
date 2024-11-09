@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { UiService } from '../services/ui.service';
 import { CommonModule } from '@angular/common';
 import { LastUrlService } from '../services/last-url.service';
+import { DataServiceService } from '../services/data-service.service';
 
 @Component({
   selector: 'app-channel',
@@ -17,7 +18,8 @@ export class ChannelComponent implements OnInit {
 
   constructor(
     public uiService: UiService,
-    private lastUrlService: LastUrlService
+    private lastUrlService: LastUrlService,
+    public dataServiceService: DataServiceService
   ) {}
   ngOnInit(): void {
     // this.setAnimation();
