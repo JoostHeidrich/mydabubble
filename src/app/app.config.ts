@@ -19,10 +19,12 @@ import {
   StorageModule,
   getStorage,
 } from '@angular/fire/storage';
+import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    provideClientHydration(),
     importProvidersFrom(
       provideFirebaseApp(() =>
         initializeApp({

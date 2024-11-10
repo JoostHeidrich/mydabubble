@@ -10,8 +10,14 @@
 <div>
   <app-new-channel
     class="popUps"
+    (click)="closePopup()"
     *ngIf="lastUrlService.currentUrl.includes('createChannel')"
   ></app-new-channel>
+  <app-edit-profile
+    class="popUps"
+    (click)="closePopup()"
+    *ngIf="lastUrlService.currentUrl.includes('edit-profile')"
+  ></app-edit-profile>
 </div>
 
 <app-sidebar-toggle-button></app-sidebar-toggle-button>

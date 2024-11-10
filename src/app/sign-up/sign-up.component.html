@@ -1,0 +1,7 @@
+<p>sign-up works!</p>
+<input #emailInput type="email" placeholder="Email" />
+<input #passwordInput type="password" placeholder="Password" />
+<input #Name type="text" placeholder="Name" />
+<button (click)="signUp(emailInput.value, passwordInput.value, Name.value)">
+  Sign Up
+</button>

@@ -46,3 +46,31 @@
   transform: translateY(-50%); /* Zentriert das Icon vertikal */
   pointer-events: none; /* Verhindert, dass das Icon den Fokus auf das Input-Feld stört */
 }
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  gap: 20px;
+  right: 36px;
+  margin: 5px 0;
+
+  button {
+    border: none;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+  }
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+  }
+  p {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
