@@ -55,8 +55,9 @@
   gap: 20px;
   right: 36px;
   margin: 5px 0;
+  cursor: pointer;
 
-  button {
+  span {
     border: none;
     padding: 0;
     height: 30px;
@@ -72,5 +73,12 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+
+  &:hover {
+    color: #535af1;
+    path {
+      fill: #535af1;
+    }
   }
 }

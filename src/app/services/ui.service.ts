@@ -9,6 +9,9 @@ export class UiService {
   private threadOpen = new BehaviorSubject<boolean>(false);
   private sidebarOpen = new BehaviorSubject<boolean>(false);
 
+  createChannel = false;
+  editProfile = false;
+
   threadOpen$ = this.threadOpen.asObservable();
   sidebarOpen$ = this.sidebarOpen.asObservable();
 

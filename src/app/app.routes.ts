@@ -16,26 +16,4 @@ export const routes: Routes = [
     path: 'home/channel/:channelId/thread/:threadId',
     component: HomeComponent,
   },
-  {
-    path: 'home/channel/:channelId/sidebar/createChannel',
-    component: HomeComponent,
-  },
-
-  {
-    path: 'home/channel/:channelId/thread/:threadId/sidebar/createChannel',
-    component: HomeComponent,
-  },
-  {
-    path: 'home/channel/:channelId/sidebar/edit-profile',
-    component: HomeComponent,
-  },
-  { path: 'home/channel/:channelId/edit-profile', component: HomeComponent },
-  {
-    path: 'home/channel/:channelId/thread/:threadId/sidebar/edit-profile',
-    component: HomeComponent,
-  },
-  {
-    path: 'home/channel/:channelId/thread/:threadId/edit-profile',
-    component: HomeComponent,
-  },
 ];

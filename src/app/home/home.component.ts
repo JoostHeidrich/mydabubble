@@ -35,26 +35,4 @@ export class HomeComponent {
     public lastUrlService: LastUrlService,
     private router: Router
   ) {}
-
-  closePopup() {
-    console.log(this.router.url);
-    let newUrl = this.router.url;
-
-    if (this.router.url.includes('createChannel')) {
-      newUrl = newUrl.replace('createChannel', '');
-    } else if (this.router.url.includes('edit-profile')) {
-      newUrl = newUrl.replace('edit-profile', '');
-    }
-
-    // Entferne auch eventuell entstehende doppelte Schrägstriche
-    newUrl = newUrl.replace(/\/{2,}/g, '/');
-
-    // Entferne den abschließenden Schrägstrich, falls vorhanden
-    if (newUrl.endsWith('/')) {
-      newUrl = newUrl.slice(0, -1);
-    }
-
-    // Die URL aktualisieren, ohne die Seite neu zu laden
-    this.router.navigateByUrl(newUrl, { skipLocationChange: true });
-  }
 }

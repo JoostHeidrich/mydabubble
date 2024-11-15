@@ -133,13 +133,14 @@
       </svg>
     </div>
   </div>
-  <div *ngIf="dataServiceService.currentUser" class="profile">
+  <div
+    (click)="uiService.editProfile = true"
+    *ngIf="dataServiceService.currentUser"
+    class="profile"
+  >
     <p>{{ dataServiceService.currentUser.name }}</p>
     <img src="{{ dataServiceService.currentUser.ProfilePictureUrl }}" />
-    <button
-      class="cursor-pointer"
-      [routerLink]="[lastUrlService.currentUrl, 'edit-profile']"
-    >
+    <span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="30"
@@ -165,6 +166,6 @@
           />
         </g>
       </svg>
-    </button>
+    </span>
   </div>
 </div>

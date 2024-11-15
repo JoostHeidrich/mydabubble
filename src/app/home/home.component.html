@@ -10,13 +10,13 @@
 <div>
   <app-new-channel
     class="popUps"
-    (click)="closePopup()"
-    *ngIf="lastUrlService.currentUrl.includes('createChannel')"
+    (click)="uiService.createChannel = false"
+    *ngIf="uiService.createChannel"
   ></app-new-channel>
   <app-edit-profile
     class="popUps"
-    (click)="closePopup()"
-    *ngIf="lastUrlService.currentUrl.includes('edit-profile')"
+    (click)="uiService.editProfile = false"
+    *ngIf="uiService.editProfile"
   ></app-edit-profile>
 </div>
 
