@@ -3,9 +3,7 @@
   class="content"
   (click)="$event.stopPropagation()"
 >
-  <button
-    (click)="open = 'openProfile'; $event.stopPropagation(); this.logOpen()"
-  >
+  <button (click)="open = 'openProfile'; $event.stopPropagation()">
     Profil
   </button>
   <button (click)="logOut()">Log out</button>

@@ -32,9 +32,6 @@ export class EditProfileComponent implements OnInit {
     this.userName = this.dataServiceService.currentUser.name;
   }
 
-  logOpen() {
-    console.log(this.open);
-  }
   logOut() {
     this.dataServiceService.currentUid = undefined;
     this.dataServiceService.currentUser = undefined;
@@ -44,7 +41,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   saveEdit() {
-    console.log(this.email, this.userName);
     const user = this.auth.currentUser;
 
     if (user) {
@@ -68,7 +64,7 @@ export class EditProfileComponent implements OnInit {
           });
         })
         .then(() => {
-          this.open = 'openProfile'
+          this.open = 'openProfile';
           console.log('User data updated in Firestore.');
         })
         .catch((error) => {
