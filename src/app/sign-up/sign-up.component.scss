@@ -1,0 +1,18 @@
+.contentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}

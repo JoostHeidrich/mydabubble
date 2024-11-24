@@ -15,6 +15,7 @@ import {
 import { Subscription } from 'rxjs';
 import { UiService } from '../services/ui.service';
 import { LastUrlService } from '../services/last-url.service';
+import { DataServiceService } from '../services/data-service.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -24,12 +25,14 @@ import { LastUrlService } from '../services/last-url.service';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent implements OnInit {
-  channelId = 'AAAChannelId';
-  thradId = 'AAAThradId';
+  channelOpen = true;
+  userOpen = true;
   constructor(
     public uiService: UiService,
-    public lastUrlService: LastUrlService
+    public lastUrlService: LastUrlService,
+    public dataServiceService: DataServiceService
   ) {}
+
   ngOnInit(): void {}
 
   getClass() {

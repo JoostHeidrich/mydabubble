@@ -9,6 +9,13 @@ import {
 import { Auth, user } from '@angular/fire/auth';
 import { filter, Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import {
+  deleteObject,
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +23,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class DataServiceService {
   allChannel: any = [];
   allMessages: any = [];
+  allUser: any = [];
   currentUid: any;
   currentUser: any;
 
@@ -62,7 +70,6 @@ export class DataServiceService {
             this.setNoteObjectMessage(element.data(), element.id)
           );
         });
-        console.log(this.allMessages);
       },
       (error) => {
         console.error('Error fetching documents:', error);
@@ -102,7 +109,6 @@ export class DataServiceService {
             this.setNoteObjectChannel(element.data(), element.id)
           );
         });
-        console.log(this.allChannel);
       },
       (error) => {
         console.error('Error fetching documents:', error);
@@ -113,6 +119,7 @@ export class DataServiceService {
   setNoteObjectChannel(obj: any, id: string) {
     return {
       id: id,
+      channelName: obj.channelName || '',
       channelCreator: obj.channelCreator || '',
       description: obj.description || '',
       channelUser: obj.channelUser || '',
@@ -121,20 +128,19 @@ export class DataServiceService {
   }
 
   setCurrentUser() {
-    let allUser: any = [];
+    this.allUser = [];
     const q = query(collection(this.firestore, 'user'), limit(1000));
     onSnapshot(
       q,
       (list) => {
         list.forEach((element) => {
-          allUser.push(this.setNoteObjectUser(element.data(), element.id));
+          this.allUser.push(this.setNoteObjectUser(element.data(), element.id));
         });
         // Verarbeite allUser nachdem die Daten vollständig geladen sind
-        for (let i = 0; i < allUser.length; i++) {
-          const element = allUser[i];
+        for (let i = 0; i < this.allUser.length; i++) {
+          const element = this.allUser[i];
           if (element.id === this.currentUid) {
             this.currentUser = element;
-            console.log(this.currentUser);
           }
         }
       },
@@ -157,5 +163,35 @@ export class DataServiceService {
     const url = window.location.pathname;
     const match = url.match(/\/channel\/([^\/]+)/);
     return match ? match[1] : 'undefined';
+  }
+
+  uploadFile(file: File, source: any): Promise<string> {
+    const storage = getStorage();
+    const storageRef = ref(storage, `${source}/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    return new Promise<string>((resolve, reject) => {
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {},
+        (error) => {
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: any) => {
+            resolve(downloadURL);
+          });
+        }
+      );
+    });
+  }
+
+  async deleteFile(fileUrl: string, source: any): Promise<void> {
+    const storage = getStorage();
+    const fileRef = ref(storage, `${source}/${fileUrl}`);
+
+    deleteObject(fileRef)
+      .then(() => {})
+      .catch((error) => {});
   }
 }

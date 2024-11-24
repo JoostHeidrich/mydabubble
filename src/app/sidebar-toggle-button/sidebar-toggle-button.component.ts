@@ -17,37 +17,21 @@ export class SidebarToggleButtonComponent {
   }
 
   toggleSidebar() {
-    // Extrahieren der aktuellen URL ohne den Domain-Teil
-    const url = this.lastUrlService.currentUrl;
-    let link;
+    const { currentUrl } = this.lastUrlService;
 
-    // Extrahiere channelId und threadId, falls vorhanden
-    const channelMatch = url.match(/home\/channel\/([^\/]+)/);
-    const threadMatch = url.match(/thread\/([^\/]+)/);
+    const [, type, id] =
+      currentUrl.match(/home\/(channel|directmessage)\/([^\/]+)/) || [];
+    const threadId = currentUrl.match(/thread\/([^\/]+)/)?.[1];
+    const isSidebarActive = currentUrl.includes('sidebar');
 
-    const channelId = channelMatch ? channelMatch[1] : null;
-    const threadId = threadMatch ? threadMatch[1] : null;
+    if (!type || !id) return console.error('Ungültige URL-Struktur');
 
-    // Überprüfen, ob die URL 'sidebar' enthält
-    const isSidebarActive = url.includes('sidebar');
-
-    // Aufbau des neuen Routen-Arrays basierend auf dem aktuellen Status von 'sidebar'
-    if (isSidebarActive) {
-      // Wenn 'sidebar' aktiv ist, entferne es
-      link = ['/home/channel', channelId];
-      if (threadId) {
-        link.push('thread', threadId);
-      }
-    } else {
-      // Wenn 'sidebar' nicht aktiv ist, füge es hinzu
-      link = ['/home/channel', channelId];
-      if (threadId) {
-        link.push('thread', threadId);
-      }
-      link.push('sidebar');
-    }
-
-    // Navigation zur neuen Route
+    const link = [
+      `/home/${type}`,
+      id,
+      ...(threadId ? ['thread', threadId] : []),
+      ...(isSidebarActive ? [] : ['sidebar']),
+    ];
     this.router.navigate(link);
   }
 }

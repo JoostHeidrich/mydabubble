@@ -16,4 +16,7 @@ export const routes: Routes = [
     path: 'home/channel/:channelId/thread/:threadId',
     component: HomeComponent,
   },
+
+  { path: 'home/directmessage/:messageId/sidebar', component: HomeComponent },
+  { path: 'home/directmessage/:messageId', component: HomeComponent },
 ];

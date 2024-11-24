@@ -1,7 +1,17 @@
-<p>sign-up works!</p>
-<input #emailInput type="email" placeholder="Email" />
-<input #passwordInput type="password" placeholder="Password" />
-<input #Name type="text" placeholder="Name" />
-<button (click)="signUp(emailInput.value, passwordInput.value, Name.value)">
-  Sign Up
-</button>
+<div class="contentContainer">
+  <div class="content">
+    <input #emailInput type="email" placeholder="Email" />
+    <input #passwordInput type="password" placeholder="Password" />
+    <input #Name type="text" placeholder="Name" />
+    <input
+      type="file"
+      accept=".jpg, .jpeg, .png"
+      (change)="onFileSelected($event)"
+    />
+    <img *ngIf="this.FileUrl" src="{{ FileUrl }}" />
+
+    <button (click)="signUp(emailInput.value, passwordInput.value, Name.value)">
+      Sign Up
+    </button>
+  </div>
+</div>

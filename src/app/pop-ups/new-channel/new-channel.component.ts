@@ -27,6 +27,7 @@ export class NewChannelComponent {
 
   channelName: any;
   description: any = '';
+
   async saveChannel() {
     this.setMessage();
     await addDoc(collection(this.firestore, 'channels'), this.toJSON()).catch(
@@ -40,6 +41,7 @@ export class NewChannelComponent {
   toJSON() {
     return {
       id: this.channel.id,
+      channelName: this.channel.channelName,
       channelCreator: this.channel.channelCreator.id,
       description: this.channel.description,
       channelUser: this.channel.channelUser,
@@ -49,6 +51,7 @@ export class NewChannelComponent {
 
   setMessage(): void {
     this.channel.channelCreator = this.dataServiceService.currentUser;
+    this.channel.channelName = this.channelName;
     this.channel.description = this.description;
     this.channel.creationDate = new Date();
   }
