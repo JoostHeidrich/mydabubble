@@ -4,6 +4,7 @@ import {
   Firestore,
   limit,
   onSnapshot,
+  orderBy,
   query,
 } from '@angular/fire/firestore';
 import { Auth, user } from '@angular/fire/auth';
@@ -24,6 +25,7 @@ export class DataServiceService {
   allChannel: any = [];
   allMessages: any = [];
   allUser: any = [];
+  currentChannel: any = [];
   currentUid: any;
   currentUser: any;
 
@@ -37,7 +39,6 @@ export class DataServiceService {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.subChannels();
-        this.subMessages();
       });
 
     // Überwache den aktuellen Benutzer
@@ -56,11 +57,13 @@ export class DataServiceService {
       collection(
         this.firestore,
         'channels',
-        this.getChannelIDFromURL(),
+        this.currentChannel.id,
         'messages'
       ),
+      orderBy('date', 'desc'), // Sortiert die Nachrichten basierend auf dem `date`-Feld in aufsteigender Reihenfolge
       limit(1000)
     );
+
     onSnapshot(
       q,
       (list) => {
@@ -80,9 +83,9 @@ export class DataServiceService {
   setNoteObjectMessage(obj: any, id: string) {
     return {
       id: id,
-      userID: obj.userID || '',
+      userId: obj.userId || '',
       message: obj.message || '',
-      sendTime: obj.sendTime || '',
+      date: obj.date || '',
       fileUrl: obj.fileUrl || '',
       fileName: obj.fileName || '',
       threadCount: obj.threadCount || '',
@@ -109,11 +112,35 @@ export class DataServiceService {
             this.setNoteObjectChannel(element.data(), element.id)
           );
         });
+        this.setCurrentChannel();
       },
       (error) => {
         console.error('Error fetching documents:', error);
       }
     );
+  }
+
+  setCurrentChannel() {
+    const url = this.router.url;
+    if (!url.includes('channel')) {
+      return; // Funktion verlassen, wenn "channel" nicht vorhanden ist
+    }
+
+    const match = url.match(/channel\/([^/]+)/);
+    if (match) {
+      // Überprüfen, ob ein Match gefunden wurde
+      const id = match[1];
+
+      for (let i = 0; i < this.allChannel.length; i++) {
+        const element = this.allChannel[i];
+        if (element.id === id) {
+          this.currentChannel = element;
+          this.subMessages();
+        }
+      }
+    } else {
+      console.warn('Keine gültige Channel-ID in der URL gefunden.');
+    }
   }
 
   setNoteObjectChannel(obj: any, id: string) {
@@ -193,5 +220,27 @@ export class DataServiceService {
     deleteObject(fileRef)
       .then(() => {})
       .catch((error) => {});
+  }
+
+  getUserFromID(id: any) {
+    for (let i = 0; i < this.allUser.length; i++) {
+      const element = this.allUser[i];
+      if (element.id === id) {
+        return element;
+      }
+    }
+  }
+
+  returnTime(timestamp: number) {
+    const date = new Date(timestamp);
+
+    return {
+      hour: date.getHours(), // Stunde
+      minutes: String(date.getMinutes()).padStart(2, '0'), // Minuten, zweistellig
+      seconds: String(date.getSeconds()).padStart(2, '0'), // Sekunden, zweistellig
+      day: date.getDate(), // Tag
+      month: date.getMonth() + 1, // Monat (0-basiert, daher +1)
+      weekday: date.toLocaleString('de-DE', { weekday: 'long' }), // Wochentag (z. B. "Montag")
+    };
   }
 }

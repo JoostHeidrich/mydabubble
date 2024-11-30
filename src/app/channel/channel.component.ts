@@ -4,11 +4,20 @@ import { UiService } from '../services/ui.service';
 import { CommonModule } from '@angular/common';
 import { LastUrlService } from '../services/last-url.service';
 import { DataServiceService } from '../services/data-service.service';
+import { ChannelHeaderComponent } from './channel-header/channel-header.component';
+import { ChannelInputComponent } from './channel-input/channel-input.component';
+import { ChannelChatAreaComponent } from './channel-chat-area/channel-chat-area.component';
 
 @Component({
   selector: 'app-channel',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    ChannelHeaderComponent,
+    ChannelInputComponent,
+    ChannelChatAreaComponent,
+  ],
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.scss', './channel-keyframes.scss'],
 })

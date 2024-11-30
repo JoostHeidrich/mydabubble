@@ -10,6 +10,7 @@ import { NewChannelComponent } from '../pop-ups/new-channel/new-channel.componen
 import { LastUrlService } from '../services/last-url.service';
 import { EditProfileComponent } from '../pop-ups/edit-profile/edit-profile.component';
 import { Router } from '@angular/router';
+import { DataServiceService } from '../services/data-service.service';
 
 @Component({
   selector: 'app-home',
@@ -33,6 +34,7 @@ export class HomeComponent {
   constructor(
     public uiService: UiService,
     public lastUrlService: LastUrlService,
-    private router: Router
+    private router: Router,
+    public dataServiceService: DataServiceService
   ) {}
 }

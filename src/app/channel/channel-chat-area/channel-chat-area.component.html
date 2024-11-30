@@ -1,1 +1,39 @@
-<p>channel-chat-area works!</p>
+<div
+  class="contentContainer"
+  *ngIf="dataServiceService.allMessages && dataServiceService.allUser"
+>
+  <div class="message" *ngFor="let message of dataServiceService.allMessages">
+    <div
+      [ngClass]="{
+        resiveMessage: message.userId != dataServiceService.currentUser.id,
+        sendMessage: message.userId == dataServiceService.currentUser.id
+      }"
+    >
+      <div>
+        <img
+          *ngIf="dataServiceService.getUserFromID(message.userId)"
+          src="{{
+            dataServiceService.getUserFromID(message.userId).ProfilePictureUrl
+          }}"
+        />
+      </div>
+      <div
+        class="messageContent"
+        *ngIf="dataServiceService.getUserFromID(message.userId)"
+      >
+        <div class="messageHeader">
+          <p class="userName">
+            {{ dataServiceService.getUserFromID(message.userId).name }}
+          </p>
+          <p class="time">
+            {{ dataServiceService.returnTime(message.date).hour }}:{{
+              dataServiceService.returnTime(message.date).minutes
+            }}
+            Uhr
+          </p>
+        </div>
+        <div class="message">{{ message.message }}</div>
+      </div>
+    </div>
+  </div>
+</div>
