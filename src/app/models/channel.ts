@@ -1,17 +1,17 @@
 export class Channel {
   id?: string;
-  channelCreator: any;
+  creator: any;
   description?: any;
-  creationDate: any;
-  channelUser: any;
-  channelName: any;
+  date: any;
+  user: any;
+  name: any;
 
   constructor(obj?: any) {
     this.id = obj ? obj.id : '';
-    this.channelName = obj ? obj.channelName : '';
-    this.channelCreator = obj ? obj.channelCreator : '';
+    this.name = obj ? obj.name : '';
+    this.creator = obj ? obj.creator : '';
     this.description = obj ? obj.description : '';
-    this.creationDate = obj ? obj.creationDate : '';
-    this.channelUser = obj ? obj.channelUser : '';
+    this.date = obj ? obj.creationDate : '';
+    this.user = obj ? obj.user : '';
   }
 }

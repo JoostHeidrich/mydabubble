@@ -146,11 +146,11 @@ export class DataServiceService {
   setNoteObjectChannel(obj: any, id: string) {
     return {
       id: id,
-      channelName: obj.channelName || '',
-      channelCreator: obj.channelCreator || '',
+      name: obj.name || '',
+      creator: obj.creator || '',
       description: obj.description || '',
-      channelUser: obj.channelUser || '',
-      creationDate: obj.creationDate || '',
+      user: obj.user || '',
+      date: obj.date || '',
     };
   }
 

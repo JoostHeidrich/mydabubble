@@ -41,18 +41,18 @@ export class NewChannelComponent {
   toJSON() {
     return {
       id: this.channel.id,
-      channelName: this.channel.channelName,
-      channelCreator: this.channel.channelCreator.id,
+      name: this.channel.name,
+      creator: this.channel.creator.id,
       description: this.channel.description,
-      channelUser: this.channel.channelUser,
-      creationDate: this.channel.creationDate,
+      user: this.channel.user,
+      creationDate: this.channel.date,
     };
   }
 
   setMessage(): void {
-    this.channel.channelCreator = this.dataServiceService.currentUser;
-    this.channel.channelName = this.channelName;
+    this.channel.creator = this.dataServiceService.currentUser;
+    this.channel.name = this.channelName;
     this.channel.description = this.description;
-    this.channel.creationDate = new Date();
+    this.channel.date = new Date();
   }
 }

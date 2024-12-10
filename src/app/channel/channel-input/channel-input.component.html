@@ -1,13 +1,19 @@
 <div class="contentContainer">
   <div class="content">
     <div class="inputContainer">
-      <textarea
-        [(ngModel)]="input"
-        placeholder="Nachricht an #{{
-          dataServiceService.currentChannel.channelName
-        }}"
+      <div
+        class="textarea"
         type="text"
-      ></textarea>
+        contenteditable="true"
+        (keydown)="onKeyDown()"
+        (focus)="removePlaceholder()"
+        (blur)="restorePlaceholder(); saveCursorPosition()"
+        #channelTextarea
+      >
+        <p class="placeholder" *ngIf="showPlaceholder">
+          Nachricht an #{{ dataServiceService.currentChannel.name }}
+        </p>
+      </div>
     </div>
     <div class="buttonContainer">
       <div>
@@ -90,5 +96,27 @@
         </svg>
       </button>
     </div>
+  </div>
+</div>
+
+<div *ngIf="showChannel" class="tagContainer">
+  <div>tag channel</div>
+  <div
+    (click)="addTagToInput('#', channel)"
+    *ngFor="let channel of dataServiceService.allChannel"
+    class="cursor-pointer"
+  >
+    {{ channel.name }}
+  </div>
+</div>
+
+<div *ngIf="showUser" class="tagContainer">
+  <div>tag User</div>
+  <div
+    (click)="addTagToInput('@', user)"
+    *ngFor="let user of dataServiceService.allUser"
+    class="cursor-pointer"
+  >
+    {{ user.name }}
   </div>
 </div>

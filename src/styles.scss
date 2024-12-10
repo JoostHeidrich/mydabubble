@@ -58,3 +58,15 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
+
+.tagHighlight {
+  display: inline-block;
+  background-color: #797ef3 !important;
+  color: #fff;
+  padding: 4px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 50px; /* Beispielsweise */
+  line-height: 24px !important;
+}
