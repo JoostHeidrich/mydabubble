@@ -30,31 +30,131 @@ export class ChannelInputComponent {
   ) {}
 
   async saveMessage() {
-    this.setMessageContent();
-    await addDoc(
-      collection(
-        this.firestore,
-        'channels',
-        this.dataServiceService.currentChannel.id,
-        'messages'
-      ),
-      this.toJSON()
-    ).catch((err) => {});
+    if (!this.inputEmpty()) {
+      // Dein Code hier
+
+      this.setMessageContent();
+      await addDoc(
+        collection(
+          this.firestore,
+          'channels',
+          this.dataServiceService.currentChannel.id,
+          'messages'
+        ),
+        this.toJSON()
+      ).catch((err) => {});
+      this.clearInput();
+    } else {
+      console.log('input empty');
+    }
   }
 
-  getMessage(): string {
+  inputEmpty(): boolean {
     if (this.channelTextarea) {
-      const text = this.channelTextarea.nativeElement.innerText.trim();
-      return this.showPlaceholder ? '' : text; // Gibt den Text zurück, wenn der Placeholder nicht angezeigt wird
+      const processedHtml = this.processHtmlElement(
+        this.channelTextarea.nativeElement
+      );
+
+      console.log(processedHtml.trim());
+      if (
+        // processedHtml.length === 0 ||
+        processedHtml.trim() ===
+          `
+         <p _ngcontent-ng-c1467907500="" class="placeholder"> Nachricht an #test channel 2 </p>
+   `.trim() ||
+        processedHtml.trim() ===
+          `<p *ngif="showPlaceholder">Nachricht an #test channel 2</p>` ||
+        processedHtml.trim() ===
+          `<br>` ||
+        processedHtml.trim().length < 1
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
-    return '';
+
+    // if (this.channelTextarea) {
+    //   const processedHtml = this.processHtmlElement(
+    //     this.channelTextarea.nativeElement
+    //   );
+    //   if (
+    //     processedHtml.length === 0 &&
+    //     processedHtml.trim() !==
+    //       `
+    //   <p _ngcontent-ng-c3229425403="" class="placeholder"> Nachricht an #test channel 2 </p>
+    //   `.trim() &&
+    //     processedHtml.trim() !==
+    //       `
+    //   <p *ngif="showPlaceholder">Nachricht an #test channel 2</p>
+    //   `
+    //   ) {
+    //     console.log('input empty', processedHtml.length);
+    //     return true;
+    //   } else if (processedHtml.length > 0) {
+    //     return false;
+    //   } else {
+    //     console.log('input filled');
+    //     console.log(processedHtml.length);
+
+    //     return false;
+    //   }
+    // } else {
+    //   return false;
+    // }
+  }
+
+  processHtmlElement(htmlElement: HTMLElement): string {
+    // Holen Sie sich den Inhalt des HTML-Elements
+    const children = htmlElement.childNodes;
+    let resultText = '';
+
+    children.forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        // Falls es ein Textknoten ist, füge ihn direkt hinzu
+        resultText += child.textContent;
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        const element = child as HTMLElement;
+        if (
+          element.tagName === 'SPAN' &&
+          element.classList.contains('tagHighlight')
+        ) {
+          const uid = element.getAttribute('data-uid');
+          const innerText = element.textContent || '';
+
+          if (innerText.startsWith('@')) {
+            resultText += `user ᛝȣ₴☯Ꝛ:${uid}`;
+          } else if (innerText.startsWith('#')) {
+            resultText += `channel ẞ₿Ꜳ֍҂:${uid}`;
+          } else {
+            resultText += innerText; // Unveränderte Inhalte
+          }
+        } else {
+          // Falls es ein anderes HTML-Element ist
+          resultText += element.outerHTML;
+        }
+      }
+    });
+
+    return resultText.trim(); // Entferne unnötige Leerzeichen
   }
 
   setMessageContent() {
-    this.message.message = this.getMessage();
+    this.message.message = this.processHtmlElement(
+      this.channelTextarea.nativeElement
+    );
     this.message.date = Date.now();
     this.message.userId = this.dataServiceService.currentUser.id;
     this.input = '';
+  }
+
+  clearInput() {
+    const textareaElement = this.channelTextarea.nativeElement;
+    textareaElement.innerHTML = /*html*/ `
+      <p *ngIf="showPlaceholder">Nachricht an #${this.dataServiceService.currentChannel.name}</p>
+    `;
   }
 
   toJSON() {
@@ -88,7 +188,6 @@ export class ChannelInputComponent {
       innerText ===
         'Nachricht an #' + this.dataServiceService.currentChannel.name
     ) {
-      console.log('Test');
       const textareaElement = this.channelTextarea.nativeElement;
       textareaElement.innerHTML = ''; // Löscht den Inhalt des Textareas
     }
@@ -103,7 +202,6 @@ export class ChannelInputComponent {
     if (innerHTML.length > 0 && innerHTML !== '<br>') {
       // Do nothing if the textarea is not empty or contains only <br>
     } else {
-      console.log('Test');
       const textareaElement = this.channelTextarea.nativeElement;
       textareaElement.innerHTML = /*html*/ `
         <p *ngIf="showPlaceholder">Nachricht an #${this.dataServiceService.currentChannel.name}</p>
@@ -174,6 +272,7 @@ export class ChannelInputComponent {
       const tagElement = document.createElement('span');
       tagElement.className = 'tagHighlight';
       tagElement.contentEditable = 'false';
+      tagElement.setAttribute('data-uid', object.id);
       tagElement.innerText = `${type}${object.name}`;
 
       // Leerzeichen nach dem Tag
