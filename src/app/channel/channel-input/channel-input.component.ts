@@ -45,7 +45,6 @@ export class ChannelInputComponent {
       ).catch((err) => {});
       this.clearInput();
     } else {
-      console.log('input empty');
     }
   }
 
@@ -53,20 +52,20 @@ export class ChannelInputComponent {
     if (this.channelTextarea) {
       const processedHtml = this.processHtmlElement(
         this.channelTextarea.nativeElement
-      );
+      ).trim();
 
-      console.log(processedHtml.trim());
+      const placeholder1 =
+        `<p _ngcontent-ng-c1467907500="" class="placeholder"> Nachricht an #${this.dataServiceService.currentChannel.name} </p>`.trim();
+      const placeholder2 =
+        `<p *ngif="showPlaceholder">Nachricht an ${this.dataServiceService.currentChannel.name}</p>`.trim();
+
+      // Entferne alle <br>-Tags und überprüfe, ob der Rest leer ist
+      const noBrHtml = processedHtml.replace(/<br\s*\/?>/g, '').trim();
+
       if (
-        // processedHtml.length === 0 ||
-        processedHtml.trim() ===
-          `
-         <p _ngcontent-ng-c1467907500="" class="placeholder"> Nachricht an #test channel 2 </p>
-   `.trim() ||
-        processedHtml.trim() ===
-          `<p *ngif="showPlaceholder">Nachricht an #test channel 2</p>` ||
-        processedHtml.trim() ===
-          `<br>` ||
-        processedHtml.trim().length < 1
+        processedHtml === placeholder1 ||
+        processedHtml === placeholder2 ||
+        noBrHtml === '' // nur <br>-Tags oder leerer Inhalt
       ) {
         return true;
       } else {
@@ -75,35 +74,6 @@ export class ChannelInputComponent {
     } else {
       return true;
     }
-
-    // if (this.channelTextarea) {
-    //   const processedHtml = this.processHtmlElement(
-    //     this.channelTextarea.nativeElement
-    //   );
-    //   if (
-    //     processedHtml.length === 0 &&
-    //     processedHtml.trim() !==
-    //       `
-    //   <p _ngcontent-ng-c3229425403="" class="placeholder"> Nachricht an #test channel 2 </p>
-    //   `.trim() &&
-    //     processedHtml.trim() !==
-    //       `
-    //   <p *ngif="showPlaceholder">Nachricht an #test channel 2</p>
-    //   `
-    //   ) {
-    //     console.log('input empty', processedHtml.length);
-    //     return true;
-    //   } else if (processedHtml.length > 0) {
-    //     return false;
-    //   } else {
-    //     console.log('input filled');
-    //     console.log(processedHtml.length);
-
-    //     return false;
-    //   }
-    // } else {
-    //   return false;
-    // }
   }
 
   processHtmlElement(htmlElement: HTMLElement): string {
@@ -392,12 +362,10 @@ export class ChannelInputComponent {
   }
 
   showTagChannel(tag: string): void {
-    console.log('Tagging channel:', tag);
     this.showChannel = true;
   }
 
   showTagUser(tag: string): void {
-    console.log('Tagging user:', tag);
     this.showUser = true;
   }
 
